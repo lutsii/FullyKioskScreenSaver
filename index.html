@@ -43,10 +43,10 @@
     </style>
 </head>
 <body>
-    <!-- Visit This URL https://sharpweather.com/widget/r/#c=cbkg=rgb(69,90,100)&c=codd=rgb(84,110,122) and edit your Weather Widget. Else, if you don't want it, delete or comment out this weather block. -->
+    <!-- Visit This URL https://sharpweather.com/widget/r/#c=cbkg=rgb(69,90,100)&c=codd=rgb(84,110,122) and edit your Weather Widget. Else, if you don't want it, delete or comment out this weather blo[...]
 
     <!-- Weather block Starts 
-    <div id="id4167f8d5860c6" a='{"t":"r","v":"1.2","lang":"en","locs":[462],"ssot":"c","sics":"ms","cbkg":"#FFFFFF00","cfnt":"rgba(255,255,255,1)","codd":"#FFFFFF00","cont":"rgba(255,255,255,0.83)"}'></div>
+    <div id="id4167f8d5860c6" a='{"t":"r","v":"1.2","lang":"en","locs":[462],"ssot":"c","sics":"ms","cbkg":"#FFFFFF00","cfnt":"rgba(255,255,255,1)","codd":"#FFFFFF00","cont":"rgba(255,255,255,0.83)"}'[...]
     Weather block Ends -->
 
 
@@ -63,6 +63,16 @@
 
             document.getElementById('clock').textContent = `${hours}:${minutes}`;
             document.getElementById('date').textContent = `${day}, ${date}`;
+        }
+
+        function scheduleNextUpdate() {
+            const now = new Date();
+            const secondsUntilNextMinute = 60 - now.getSeconds();
+            
+            setTimeout(() => {
+                updateTime();
+                setInterval(updateTime, 60000); // Now update every minute precisely
+            }, secondsUntilNextMinute * 1000);
         }
 
         function toggleClockMargin() {
@@ -83,10 +93,9 @@
             }
         }
 
-        setInterval(updateTime, 60000);
+        scheduleNextUpdate(); // Schedule first update to align with next minute boundary
         setInterval(toggleClockMargin, 5 * 60 * 1000); // Toggle margin every 5 minutes
         // setInterval(toggleWeatherPosition, 5 * 60 * 1000); // Toggle margin every 5 minutes
-        updateTime(); // Initial call to display immediately
     </script>
 </body>
 </html>
