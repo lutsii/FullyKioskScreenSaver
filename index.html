@@ -43,7 +43,7 @@
     </style>
 </head>
 <body>
-    <!-- Visit This URL https://sharpweather.com/widget/r/#c=cbkg=rgb(69,90,100)&c=codd=rgb(84,110,122) and edit your Weather Widget. Else, if you don't want it, delete or comment out this weather block -->
+    <!-- Visit This URL https://sharpweather.com/widget/r/#c=cbkg=rgb(69,90,100)&c=codd=rgb(84,110,122) and edit your Weather Widget. Else, if you don't want it, delete or comment out this weather block. -->
 
     <!-- Weather block Starts 
     <div id="id4167f8d5860c6" a='{"t":"r","v":"1.2","lang":"en","locs":[462],"ssot":"c","sics":"ms","cbkg":"#FFFFFF00","cfnt":"rgba(255,255,255,1)","codd":"#FFFFFF00","cont":"rgba(255,255,255,0.83)"}'></div>
@@ -58,11 +58,10 @@
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
             const day = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(now);
             const date = now.toLocaleDateString('fi-FI');
 
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('clock').textContent = `${hours}:${minutes}`;
             document.getElementById('date').textContent = `${day}, ${date}`;
         }
 
