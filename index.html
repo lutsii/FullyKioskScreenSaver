@@ -59,9 +59,8 @@
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-            const day = days[now.getDay()];
-            const date = now.toLocaleDateString('en-US');
+            const day = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(now);
+            const date = now.toLocaleDateString('fi-FI');
 
             document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
             document.getElementById('date').textContent = `${day}, ${date}`;
