@@ -66,12 +66,13 @@
         }
 
         function scheduleNextUpdate() {
+            updateTime(); // Display immediately
+            
             const now = new Date();
             const secondsUntilNextMinute = 60 - now.getSeconds();
             
             setTimeout(() => {
-                updateTime();
-                setInterval(updateTime, 60000); // Now update every minute precisely
+                setInterval(updateTime, 60000); // Update every minute precisely aligned
             }, secondsUntilNextMinute * 1000);
         }
 
@@ -93,7 +94,7 @@
             }
         }
 
-        scheduleNextUpdate(); // Schedule first update to align with next minute boundary
+        scheduleNextUpdate(); // Display immediately and schedule synced updates
         setInterval(toggleClockMargin, 5 * 60 * 1000); // Toggle margin every 5 minutes
         // setInterval(toggleWeatherPosition, 5 * 60 * 1000); // Toggle margin every 5 minutes
     </script>
